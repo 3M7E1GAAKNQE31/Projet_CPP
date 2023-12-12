@@ -1,17 +1,22 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <Arduino.h>
+
+
+#include <Wire.h>
 #include <rgb_lcd.h>
-#include "Character.hpp"
+extern rgb_lcd lcd;
+
+#define BUTTON_PIN D8
+#define LED_PIN D5
+//#define BUZZER_PIN D6
+#define LCD_COLS 16
+#define LCD_ROWS 2
 
 class Game {
-private:
-  rgb_lcd lcd;
-  const int BUTTON_PIN = D8;
-  const int LED_PIN = D5;
-  const int BUZZER_PIN = D6;
-  const int LCD_COLS = 16;
-  const int LCD_ROWS = 2;
+  
+public : 
   int selectedCharacter;
   int characterPosition;
   int jumpHeight;
@@ -20,12 +25,16 @@ private:
   bool characterSelected;
   int totalHeart;
   int obstaclePosition;
-  Character* currentCharacter;
-
-public:
+  
+  // Constructeur
   Game();
+
+  // Destructeur
+  ~Game();
+  
   void setup();
   void loop();
+  
 };
 
 #endif
